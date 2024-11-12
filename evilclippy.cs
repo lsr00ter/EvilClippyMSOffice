@@ -1,15 +1,15 @@
-﻿// EvilClippy 
+﻿// EvilClippy
 // Cross-platform CFBF and MS-OVBA manipulation assistant
 //
 // Author: Stan Hegt (@StanHacked) / Outflank
 // Date: 20200415
 // Version: 1.3 (added GUI unhide option)
 //
-// Special thanks to Carrie Robberts (@OrOneEqualsOne) from Walmart for her contributions to this project.
+// Special thanks to Carrie Roberts (@OrOneEqualsOne) from Walmart for her contributions to this project.
 //
 // Compilation instructions
-// Mono: mcs /reference:OpenMcdf.dll,System.IO.Compression.FileSystem.dll /out:EvilClippy.exe *.cs 
-// Visual studio developer command prompt: csc /reference:OpenMcdf.dll,System.IO.Compression.FileSystem.dll /out:EvilClippy.exe *.cs 
+// Mono: mcs /reference:OpenMcdf.dll,System.IO.Compression.FileSystem.dll /out:EvilClippy.exe *.cs
+// Visual studio developer command prompt: csc /reference:OpenMcdf.dll,System.IO.Compression.FileSystem.dll /out:EvilClippy.exe *.cs
 
 using System;
 using OpenMcdf;
@@ -226,7 +226,7 @@ public class MSOfficeManipulator
                     var foo = commonStorage.TryGetStorage("project");
                     vbaProjectCurHasProject = true;
                 }
-                catch (CFItemNotFound) 
+                catch (CFItemNotFound)
                 {
                 }
 
@@ -362,14 +362,14 @@ public class MSOfficeManipulator
 		if (optionViewableVBA)
 		{
 			Console.WriteLine("Making the project visible...");
-			// Console.WriteLine("Stream before: " + projectStreamString);					
+			// Console.WriteLine("Stream before: " + projectStreamString);
 			string tmpStr = projectStreamString;
 			tmpStr = Regex.Replace(tmpStr, "CMG=\"?.*\"?", "CMG=\"CAC866BE34C234C230C630C6\"");
 			tmpStr = Regex.Replace(tmpStr, "ID=\"?.*\"?", "ID=\"{00000000-0000-0000-0000-000000000000}\"");
 			tmpStr = Regex.Replace(tmpStr, "DPB=\"?.*\"?", "DPB=\"94963888C84FE54FE5B01B50E59251526FE67A1CC76C84ED0DAD653FD058F324BFD9D38DED37\"");
 			tmpStr = Regex.Replace(tmpStr, "GC=\"?.*\"?", "GC=\"5E5CF2C27646414741474\"");
 			string newProjectStreamString = tmpStr;
-			// Console.WriteLine("Stream afterw: " + newProjectStreamString);					
+			// Console.WriteLine("Stream afterw: " + newProjectStreamString);
 
 			// Write changes to project stream
 			projectStream.SetData(Encoding.UTF8.GetBytes(newProjectStreamString));
